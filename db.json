@@ -1,0 +1,102 @@
+{
+  "users": {
+    "sinjinisantra@gmail.com": {
+      "username": "sinjinisantra@gmail.com",
+      "password": "12345",
+      "nodeName": "Node-SINJ-XPS6",
+      "address": "0x474AA5...961",
+      "balanceDc": 100,
+      "usedGb": 2,
+      "planGb": 2,
+      "balanceGb": 0,
+      "autoShare": true,
+      "throttlePercent": 100,
+      "isHotspotActive": false,
+      "sharedAmount": 0.8,
+      "lastActiveCheck": null,
+      "speedMbps": 67.4,
+      "pingMs": 11,
+      "txs": []
+    },
+    "8765423123": {
+      "username": "8765423123",
+      "password": "1234",
+      "nodeName": "Node-8765-FUCG",
+      "address": "0x397D60...175",
+      "balanceDc": 100,
+      "usedGb": 8.4,
+      "planGb": 15,
+      "balanceGb": 6.6,
+      "autoShare": true,
+      "throttlePercent": 100,
+      "isHotspotActive": false,
+      "sharedAmount": 0,
+      "lastActiveCheck": null,
+      "speedMbps": 64.2,
+      "pingMs": 24,
+      "txs": []
+    }
+  },
+  "peers": [
+    {
+      "id": "l1",
+      "seller": "Aarav",
+      "addr": "0x89F...7C2",
+      "gb": 3,
+      "pricePerGb": 1.2,
+      "rating": 4.8,
+      "distance": "12m",
+      "ping": 14,
+      "x": 30,
+      "y": 40,
+      "balanceDc": 85.5,
+      "usedGb": 0.5,
+      "planGb": 3.5
+    },
+    {
+      "id": "l2",
+      "seller": "Priya",
+      "addr": "0xB0D...1F4",
+      "gb": 1.5,
+      "pricePerGb": 1.8,
+      "rating": 4.9,
+      "distance": "24m",
+      "ping": 22,
+      "x": 75,
+      "y": 35,
+      "balanceDc": 42.1,
+      "usedGb": 0.5,
+      "planGb": 2
+    },
+    {
+      "id": "l3",
+      "seller": "Rahul",
+      "addr": "0x77E...C10",
+      "gb": 5,
+      "pricePerGb": 1,
+      "rating": 4.6,
+      "distance": "42m",
+      "ping": 35,
+      "x": 25,
+      "y": 70,
+      "balanceDc": 210.4,
+      "usedGb": 1,
+      "planGb": 6
+    },
+    {
+      "id": "l4",
+      "seller": "Neha",
+      "addr": "0x41A...9E8",
+      "gb": 0.8,
+      "pricePerGb": 2.2,
+      "rating": 5,
+      "distance": "31m",
+      "ping": 18,
+      "x": 65,
+      "y": 75,
+      "balanceDc": 18.9,
+      "usedGb": 1.2,
+      "planGb": 2
+    }
+  ]
+}

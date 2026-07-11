@@ -165,24 +165,36 @@ export async function getOrCreateUser(mobileNumber: string): Promise<UserRecord>
   return db.users[key];
 }
 
+let memoryDb: DbSchema | null = null;
+
 export async function readDb(): Promise<DbSchema> {
+  if (memoryDb) {
+    return memoryDb;
+  }
   try {
     const data = await fs.readFile(DB_FILE, "utf-8");
     const parsed = JSON.parse(data);
-    // Migration: handle old single-user format (has top-level "user" key)
+    // Migration: handle old single-user format
     if (parsed.user && !parsed.users) {
-      await writeDb(DEFAULT_DB);
+      memoryDb = DEFAULT_DB;
       return DEFAULT_DB;
     }
-    return { ...DEFAULT_DB, ...parsed };
+    memoryDb = { ...DEFAULT_DB, ...parsed };
+    return memoryDb;
   } catch {
-    await writeDb(DEFAULT_DB);
+    memoryDb = DEFAULT_DB;
     return DEFAULT_DB;
   }
 }
 
 export async function writeDb(db: DbSchema): Promise<void> {
-  await fs.writeFile(DB_FILE, JSON.stringify(db, null, 2), "utf-8");
+  memoryDb = db;
+  try {
+    await fs.writeFile(DB_FILE, JSON.stringify(db, null, 2), "utf-8");
+  } catch (err) {
+    // Silently capture write errors on read-only serverless platforms (like Vercel)
+    console.log("[db] Filesystem is read-only. Saved database state in memory.");
+  }
 }
 
 export interface UserStateResult {

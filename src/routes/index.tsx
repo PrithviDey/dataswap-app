@@ -43,22 +43,6 @@ import {
 
 export const Route = createFileRoute("/")({
   component: Index,
-  beforeLoad: () => {
-    if (typeof window !== "undefined") {
-      const username = localStorage.getItem("currentUser");
-      if (!username) {
-        throw redirect({ to: "/login" });
-      }
-      return { username };
-    }
-    return { username: "" };
-  },
-  loader: async ({ context }: any) => {
-    const username = context?.username ?? "";
-    if (!username) return { user: null, peers: [], currentUsername: "" };
-    const data = await getServerState({ data: username });
-    return { ...data, currentUsername: username };
-  },
 });
 
 type Tx = {

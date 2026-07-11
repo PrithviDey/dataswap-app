@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { readDb, writeDb, createNewUser, getSyncedStateForUser, getOrCreateUser } from "./db";
 import twilio from "twilio";
+import crypto from "crypto";
 
 // Memory storage for OTP verification codes
 const ACTIVE_OTPS: Record<string, string> = {};

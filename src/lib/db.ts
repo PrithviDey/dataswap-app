@@ -204,8 +204,13 @@ export interface UserStateResult {
 
 export async function getSyncedStateForUser(username: string): Promise<UserStateResult> {
   const db = await readDb();
-  const user = db.users[username];
-  if (!user) throw new Error("User not found");
+  let user = db.users[username];
+  if (!user) {
+    // Auto-create profile to prevent crashes in stateless serverless environments (like Vercel)
+    user = createNewUser(username);
+    db.users[username] = user;
+    await writeDb(db);
+  }
 
   let updated = false;
 
